@@ -1,6 +1,5 @@
 runtime: python38  # Используем Python 3.8, так как для Python 3.10 возможно наличие ограничений на момент вашего запроса.
 api_version: 1
-threadsafe: true
 
 handlers:
 - url: /robots\.txt
