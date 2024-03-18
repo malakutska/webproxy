@@ -47,7 +47,7 @@ skip_headers = [
 import webapp2
 import logging
 import re
-import urllib
+import urllib.parse
 from google.appengine.api import urlfetch
 
 class MainHandler(webapp2.RequestHandler):
@@ -90,14 +90,14 @@ class MainHandler(webapp2.RequestHandler):
        'port' in self.request.GET and \
        not 'ip' in self.request.GET:
        
-      path_qs += '&ip=' + urllib.quote(self.request.remote_addr)
+      path_qs += '&ip=' + urllib.parse.quote(self.request.remote_addr)
     
     url = host_scheme + '://' + subdomain + host_name + path_qs
     logging.debug(url)
     
     # translate browser headers
     headers = {}
-    for name, value in self.request.headers.iteritems():
+    for name, value in self.request.headers.items():
       if not name.startswith('X-'):
         headers[name] = value.replace(self.proxy_host_name, host_name) 
     
