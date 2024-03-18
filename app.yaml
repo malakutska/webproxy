@@ -1,4 +1,4 @@
-runtime: python27
+runtime: python38  # Используем Python 3.8, так как для Python 3.10 возможно наличие ограничений на момент вашего запроса.
 api_version: 1
 threadsafe: true
 
@@ -8,9 +8,8 @@ handlers:
   upload: robots\.txt
 
 - url: /.*
-  script: webproxy.app
+  script: auto  # Заменяем "webproxy.app" на "auto" для автоматического выбора подходящего обработчика
 
 libraries:
 - name: webapp2
   version: latest
-  
